@@ -1,0 +1,113 @@
+<h1>My mandalas</h1>
+<table style="border: 1px solid black">
+  <tr>
+    <th style="border: 1px solid black">ind</th>
+    <th style="border: 1px solid black">type</th>
+    <th style="border: 1px solid black">points</th>
+    <th style="border: 1px solid black">style</th>
+    <th style="border: 1px solid black">cx</th>
+    <th style="border: 1px solid black">cy</th>
+    <th style="border: 1px solid black">r</th>
+    <th style="border: 1px solid black">stroke</th>
+    <th style="border: 1px solid black">strokeWidth</th>
+    <th style="border: 1px solid black">fill</th>
+    <th style="border: 1px solid black">x1</th>
+    <th style="border: 1px solid black">y1</th>
+    <th style="border: 1px solid black">x2</th>
+    <th style="border: 1px solid black">y2</th>
+  </tr>
+  <tr *ngFor="let shapeI of listShape; let ind = index">
+    <td style="border: 1px solid black">{{ ind + 1 }}</td>
+    <td style="border: 1px solid black">{{ shapeI.type }}</td>
+    <td style="border: 1px solid black">{{ shapeI.points }}</td>
+    <td style="border: 1px solid black">{{ shapeI.style }}</td>
+    <td style="border: 1px solid black">{{ shapeI.cx }}</td>
+    <td style="border: 1px solid black">{{ shapeI.cy }}</td>
+    <td style="border: 1px solid black">{{ shapeI.r }}</td>
+    <td style="border: 1px solid black">{{ shapeI.stroke }}</td>
+    <td style="border: 1px solid black">{{ shapeI.strokeWidth }}</td>
+    <td style="border: 1px solid black">{{ shapeI.fill }}</td>
+    <td style="border: 1px solid black">{{ shapeI.x1 }}</td>
+    <td style="border: 1px solid black">{{ shapeI.y1 }}</td>
+    <td style="border: 1px solid black">{{ shapeI.x2 }}</td>
+    <td style="border: 1px solid black">{{ shapeI.y2 }}</td>
+  </tr>
+</table>
+<svg id="oaSvgId" height="1000" width="1000"></svg>
+<svg height="1000" width="1000">
+  <polygon
+    points="500,2 879,405 500,808 123,405"
+    style="fill: hsla(9, 100%, 64%, 0.6); stroke: purple; stroke-width: 1"
+  />
+  <polygon
+    points="500,32 879,405 500,788 123,405"
+    style="fill: hsla(9, 100%, 64%, 0.6); stroke: purple; stroke-width: 1"
+  />
+  <polygon
+    points="500,62 849,405 500,758 153,405"
+    style="fill: rgb(255, 165, 0); stroke: purple; stroke-width: 1"
+  />
+  <circle
+    cx="500"
+    cy="410"
+    r="250"
+    stroke="white"
+    stroke-width="4"
+    fill="red"
+  />
+  <line
+    x1="500"
+    y1="162"
+    x2="500"
+    y2="658"
+    style="stroke: black; stroke-width: 2"
+  />
+  <line
+    x1="253"
+    y1="405"
+    x2="500"
+    y2="658"
+    style="stroke: black; stroke-width: 2"
+  />
+  <line
+    x1="749"
+    y1="405"
+    x2="500"
+    y2="658"
+    style="stroke: black; stroke-width: 2"
+  />
+  <circle cx="500" cy="410" r="150" stroke="pink" stroke-width="4" fill="red" />
+  <polygon
+    points="500,310 440,498 590,378 410,378 560,498"
+    style="
+      fill: hsl(0, 20%, 50%);
+      stroke: black;
+      stroke-width: 3;
+      fill-rule: nonzero;
+    "
+  />
+  <circle
+    cx="500"
+    cy="410"
+    r="20"
+    stroke="black"
+    stroke-width="2"
+    fill="yellow"
+  />
+  <circle
+    cx="500"
+    cy="410"
+    r="8"
+    stroke="black"
+    stroke-width="2"
+    fill="black"
+  />
+  <circle
+    cx="500"
+    cy="410"
+    r="4"
+    stroke="black"
+    stroke-width="0"
+    fill="white"
+  />
+</svg>
