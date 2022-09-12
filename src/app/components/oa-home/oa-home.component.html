@@ -1,113 +1,100 @@
 <h1>My mandalas</h1>
+<p *ngIf="selectedInd !== -1">Ind: {{ selectedInd + 1 }}</p>
+<p *ngIf="selectedInd !== -1">{{ getSelectedShapeInnerHtml() }}</p>
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.type" placeholder="type">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.points" placeholder="points">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.style" placeholder="style">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.cx" placeholder="cx">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.cy" placeholder="cy">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text" [(ngModel)]="selectedShape.r"
+  placeholder="r">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.stroke" placeholder="stroke">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.strokeWidth" placeholder="stroke-width">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.fill" placeholder="fill">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.x1" placeholder="x1">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.y1" placeholder="y1">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.x2" placeholder="x2">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.y2" placeholder="y2">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.width" placeholder="width">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.height" placeholder="height">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text" [(ngModel)]="selectedShape.x"
+  placeholder="x">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text" [(ngModel)]="selectedShape.y"
+  placeholder="y">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.rx" placeholder="rx">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.ry" placeholder="ry">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text" [(ngModel)]="selectedShape.d"
+  placeholder="d">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.dx" placeholder="dx">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.fontSize" placeholder="font-size">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.fontFamily" placeholder="font-family">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.textAnchor" placeholder="text-anchor">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.text" placeholder="text">
+<input *ngIf="selectedShape" style="margin-right: 0.5rem; margin-top: 0.5rem;" type="text"
+  [(ngModel)]="selectedShape.transform" placeholder="transform">
+<br *ngIf="selectedShape">
+<br *ngIf="selectedShape">
+<button type="button" (click)="newShape()">new</button>&nbsp;
+<button type="button" (click)="addShape()">add</button>&nbsp;
+<button type="button" (click)="updateShape()">update</button><br><br>
 <table style="border: 1px solid black">
   <tr>
     <th style="border: 1px solid black">ind</th>
     <th style="border: 1px solid black">type</th>
-    <th style="border: 1px solid black">points</th>
-    <th style="border: 1px solid black">style</th>
-    <th style="border: 1px solid black">cx</th>
-    <th style="border: 1px solid black">cy</th>
-    <th style="border: 1px solid black">r</th>
-    <th style="border: 1px solid black">stroke</th>
-    <th style="border: 1px solid black">strokeWidth</th>
-    <th style="border: 1px solid black">fill</th>
-    <th style="border: 1px solid black">x1</th>
-    <th style="border: 1px solid black">y1</th>
-    <th style="border: 1px solid black">x2</th>
-    <th style="border: 1px solid black">y2</th>
+    <th style="border: 1px solid black"></th>
+    <th style="border: 1px solid black"></th>
+    <th style="border: 1px solid black"></th>
   </tr>
   <tr *ngFor="let shapeI of listShape; let ind = index">
     <td style="border: 1px solid black">{{ ind + 1 }}</td>
-    <td style="border: 1px solid black">{{ shapeI.type }}</td>
-    <td style="border: 1px solid black">{{ shapeI.points }}</td>
-    <td style="border: 1px solid black">{{ shapeI.style }}</td>
-    <td style="border: 1px solid black">{{ shapeI.cx }}</td>
-    <td style="border: 1px solid black">{{ shapeI.cy }}</td>
-    <td style="border: 1px solid black">{{ shapeI.r }}</td>
-    <td style="border: 1px solid black">{{ shapeI.stroke }}</td>
-    <td style="border: 1px solid black">{{ shapeI.strokeWidth }}</td>
-    <td style="border: 1px solid black">{{ shapeI.fill }}</td>
-    <td style="border: 1px solid black">{{ shapeI.x1 }}</td>
-    <td style="border: 1px solid black">{{ shapeI.y1 }}</td>
-    <td style="border: 1px solid black">{{ shapeI.x2 }}</td>
-    <td style="border: 1px solid black">{{ shapeI.y2 }}</td>
+    <td style="border: 1px solid black; cursor: pointer;" (click)="doSel(ind)">{{ shapeI.getInnerHtml() }}</td>
+    <td style="border: 1px solid black"><button type="button" (click)="doUp(ind)">up</button></td>
+    <td style="border: 1px solid black"><button type="button" (click)="doDel(ind)">del</button></td>
+    <td style="border: 1px solid black"><button type="button" (click)="doDown(ind)">down</button></td>
   </tr>
 </table>
-<svg id="oaSvgId" height="1000" width="1000"></svg>
+<!--<div app-oa-svg-shape></div>-->
+<svg id="oaSvgId" height="1000" width="1000">
+</svg>
 <svg height="1000" width="1000">
-  <polygon
-    points="500,2 879,405 500,808 123,405"
-    style="fill: hsla(9, 100%, 64%, 0.6); stroke: purple; stroke-width: 1"
-  />
-  <polygon
-    points="500,32 879,405 500,788 123,405"
-    style="fill: hsla(9, 100%, 64%, 0.6); stroke: purple; stroke-width: 1"
-  />
-  <polygon
-    points="500,62 849,405 500,758 153,405"
-    style="fill: rgb(255, 165, 0); stroke: purple; stroke-width: 1"
-  />
-  <circle
-    cx="500"
-    cy="410"
-    r="250"
-    stroke="white"
-    stroke-width="4"
-    fill="red"
-  />
-  <line
-    x1="500"
-    y1="162"
-    x2="500"
-    y2="658"
-    style="stroke: black; stroke-width: 2"
-  />
-  <line
-    x1="253"
-    y1="405"
-    x2="500"
-    y2="658"
-    style="stroke: black; stroke-width: 2"
-  />
-  <line
-    x1="749"
-    y1="405"
-    x2="500"
-    y2="658"
-    style="stroke: black; stroke-width: 2"
-  />
+  <polygon points="500,2 879,405 500,808 123,405"
+    style="fill: hsla(9, 100%, 64%, 0.6); stroke: purple; stroke-width: 1" />
+  <polygon points="500,32 879,405 500,788 123,405"
+    style="fill: hsla(9, 100%, 64%, 0.6); stroke: purple; stroke-width: 1" />
+  <polygon points="500,62 849,405 500,758 153,405" style="fill: rgb(255, 165, 0); stroke: purple; stroke-width: 1" />
+  <circle cx="500" cy="410" r="250" stroke="white" stroke-width="4" fill="red" />
+  <line x1="500" y1="162" x2="500" y2="658" style="stroke: black; stroke-width: 2" />
+  <line x1="253" y1="405" x2="500" y2="658" style="stroke: black; stroke-width: 2" />
+  <line x1="749" y1="405" x2="500" y2="658" style="stroke: black; stroke-width: 2" />
   <circle cx="500" cy="410" r="150" stroke="pink" stroke-width="4" fill="red" />
-  <polygon
-    points="500,310 440,498 590,378 410,378 560,498"
-    style="
+  <polygon points="500,310 440,498 590,378 410,378 560,498" style="
       fill: hsl(0, 20%, 50%);
       stroke: black;
       stroke-width: 3;
       fill-rule: nonzero;
-    "
-  />
-  <circle
-    cx="500"
-    cy="410"
-    r="20"
-    stroke="black"
-    stroke-width="2"
-    fill="yellow"
-  />
-  <circle
-    cx="500"
-    cy="410"
-    r="8"
-    stroke="black"
-    stroke-width="2"
-    fill="black"
-  />
-  <circle
-    cx="500"
-    cy="410"
-    r="4"
-    stroke="black"
-    stroke-width="0"
-    fill="white"
-  />
+    " />
+  <circle cx="500" cy="410" r="20" stroke="black" stroke-width="2" fill="yellow" />
+  <circle cx="500" cy="410" r="8" stroke="black" stroke-width="2" fill="black" />
+  <circle cx="500" cy="410" r="4" stroke="black" stroke-width="0" fill="white" />
 </svg>

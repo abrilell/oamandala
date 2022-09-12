@@ -9,8 +9,10 @@ import { OaSvgShapeComponent } from '../oa-svg-shape/oa-svg-shape.component';
 })
 export class OaHomeComponent implements OnInit, AfterViewInit {
   listShape: OaSvgShape[] = [];
+  selectedInd: number = -1;
+  selectedShape: OaSvgShape | undefined;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     let shape: OaSvgShape = new OaSvgShape();
@@ -38,6 +40,15 @@ export class OaHomeComponent implements OnInit, AfterViewInit {
     shape.y2 = 658;
     shape.style = 'stroke: black; stroke-width: 2';
     this.listShape.push(shape);
+
+    shape = new OaSvgShape();
+    shape.type = 'rect';
+    shape.x = 300;
+    shape.y = 140;
+    shape.width = 300;
+    shape.height = 100;
+    shape.style = 'fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)';
+    this.listShape.push(shape);
   }
 
   ngAfterViewInit(): void {
@@ -50,5 +61,63 @@ export class OaHomeComponent implements OnInit, AfterViewInit {
       shapes = shapes + shapeI.getInnerHtml();
     }
     oaSvg.innerHTML = shapes;
+  }
+
+  private clearSelected(): void {
+    this.selectedInd = -1;
+    this.selectedShape = undefined;
+  }
+
+  doUp(ind: number): void {
+    this.clearSelected();
+    const shape: OaSvgShape = this.listShape[ind];
+    this.listShape.splice(ind, 1);
+    this.listShape.splice(ind - 1, 0, shape);
+    this.ngAfterViewInit();
+  }
+
+  doDown(ind: number): void {
+    this.clearSelected();
+    const shape: OaSvgShape = this.listShape[ind];
+    this.listShape.splice(ind, 1);
+    this.listShape.splice(ind + 1, 0, shape);
+    this.ngAfterViewInit();
+  }
+
+  doDel(ind: number): void {
+    this.clearSelected();
+    this.listShape.splice(ind, 1);
+    this.ngAfterViewInit();
+  }
+
+  newShape(): void {
+    this.clearSelected();
+    this.selectedShape = new OaSvgShape();
+  }
+
+  doSel(ind: number): void {
+    this.selectedInd = ind;
+    this.selectedShape = this.listShape[ind].getClone();
+  }
+
+  updateShape(): void {
+    if (this.selectedShape) {
+      this.listShape.splice(this.selectedInd, 1, this.selectedShape);
+    }
+    this.clearSelected();
+    this.ngAfterViewInit();
+  }
+
+  addShape(): void {
+    if (this.selectedShape) {
+      this.listShape.push(this.selectedShape);
+    }
+    this.clearSelected();
+    this.ngAfterViewInit();
+  }
+
+  getSelectedShapeInnerHtml(): string | undefined {
+    if (this.selectedInd < 0) { return undefined; }
+    return this.listShape[this.selectedInd].getInnerHtml();
   }
 }
